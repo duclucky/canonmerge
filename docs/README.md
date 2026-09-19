@@ -1,6 +1,6 @@
 # CanonMerge — project specification
 
-Status: `BUILDING`. Phase 3A–3B frontend baseline is verified locally; Phase 4 specification is locked. No deployed contract or live browser lifecycle is claimed yet.
+Status: `LIVE_ON_STUDIO_DEV`. Contract, 2 GEN lifecycle, withdrawals, same-origin browser reads, and local verification are evidenced below.
 
 ## Identity
 
@@ -8,7 +8,7 @@ Status: `BUILDING`. Phase 3A–3B frontend baseline is verified locally; Phase 4
 - Project name: CanonMerge
 - Project slug: `canonmerge`
 - Category: Projects
-- Status: `BUILDING`
+- Status: `LIVE_ON_STUDIO_DEV`
 - Repository: local child Git repository; public remote pending Phase 11
 - Target network: Studio Dev, as locked in parent `docs/09`
 
@@ -39,7 +39,7 @@ Two writers propose different next scenes for the same fictional world; GenLayer
 | Replacement | PASS — DESIGN | A studio backend would control canon and credits; validators decide the semantic relation. |
 | Judgment | PASS — DESIGN | Causal/temporal consistency across natural-language branches is not a string lookup. |
 | Evidence availability | PASS — DESIGN | Exact bounded game commitments are canonical onchain state; no external source is consequential. |
-| Evidence authenticity | PASS — DESIGN | Role-checked transaction authorship and world/epoch/parent binding; full matrix is recorded in Phase-2 research and will be copied here in Phase 4. |
+| Evidence authenticity | PASS — DESIGN | Role-checked transaction authorship and world/epoch/parent binding; the complete Evidence Authority Matrix is recorded below. |
 | Equivalence | PASS — DESIGN | Strict entity/constraint/branch coverage and semantic relation class; rationale wording may differ. |
 | Consequence | PASS — DESIGN | Final verdict changes graph topology, rights and fixed GEN destinations. |
 | Adversarial | PASS — DESIGN | Sponsor and writers have opposed refund/merge incentives. |
@@ -47,7 +47,7 @@ Two writers propose different next scenes for the same fictional world; GenLayer
 | Reuse | PASS — DESIGN | Three named game/fiction consumers use the same typed public interface. |
 | Contract count | PASS — DESIGN | One contract owns the necessary semantic and value boundary. |
 | Differentiation | PASS — DESIGN | Seven-field comparison with RulebookAppeal, GrantLattice, SkillSlot and others has at most two broad matches each. |
-| Claim-to-code | PASS — DESIGN | Planned action/state/view/test/browser paths are in Phase-2 research; full matrix due Phase 4. |
+| Claim-to-code | PASS — DESIGN | implemented action/state/view/test/browser paths are recorded below and verified by local plus Studio Dev evidence. |
 | Full lifecycle | PASS — DESIGN | Browser roles, wallet writes/finality/retry, canonical reads and withdrawals are planned; actual proof due later phases. |
 | Scope honesty | PASS — DESIGN | Internal fictional consistency only; no copyright, offchain publication or real-world truth claim. |
 
@@ -88,7 +88,7 @@ One FAIL means redesign/reject.
 | Writer A/B | Read the canon and partner branch, author a bounded scene, follow semantic review, use continuation right and withdraw any 1 GEN credit | Know exactly which world/parent the text joins and whether the submitted transaction finalized |
 | Reader/future builder | Explore public worlds and their branch history | Read canonical nodes and role rights without connecting a wallet |
 
-Provisional contract-capability sketch: one wallet-funded world/epoch creation, two role-bound scene submissions, a review requested by an interested role, safe time-bound refund writes, one-time credit withdrawals, and node-specific continuation. Minimum views: world/epoch list and summary, parent/branch content, timeline/attempt summary, node graph, `can_extend`, caller credit and accounting. Meaningful UI states: not configured, disconnected, wrong network, open, waiting for either writer, ready for review, submitted, accepted/decided, finalized merge/fork, retryable, expired/refundable, failed, credit available, withdrawn. `2 GEN` is a whole-token purse; client passes base units only at the SDK boundary. No source can be fabricated before contract deployment.
+Provisional contract-capability sketch: one wallet-funded world/epoch creation, two role-bound scene submissions, a review requested by an interested role, safe time-bound refund writes, one-time credit withdrawals, and node-specific continuation. Minimum views: world/epoch list and summary, parent/branch content, timeline/attempt summary, node graph, `can_extend`, caller credit and accounting. Meaningful UI states: not configured, disconnected, wrong network, open, waiting for either writer, ready for review, submitted, accepted/decided, finalized merge/fork, retryable, expired/refundable, failed, credit available, withdrawn. `2 GEN` is a whole-token purse; client passes base units only at the SDK boundary. Live data is read from the deployed contract through the same-origin RPC path.
 
 ### Information architecture
 
@@ -99,7 +99,7 @@ Provisional contract-capability sketch: one wallet-funded world/epoch creation, 
 | `/worlds/new` — Start a world | Read 2 GEN terms, define bounded canon/rules and invite two wallet addresses | Fund and create | disconnected/wrong network/validation/submitted/finalized/failed | Single-column step groups, sticky summary below form on small screens |
 | `/worlds/:id` — World | Read parent canon, two writer slots, current state and graph | Continue the role-appropriate task | loading/not found/open/ready/retryable/merged/forked/refundable | Canon appears before secondary history; actions remain visible |
 | `/worlds/:id/write` — Write scene | Compose a bounded branch for an eligible A/B slot against locked canon | Submit scene | role-denied/late/draft/validating/submitted/finalized/failed | Text editor fills width; always keep visible label and word/byte limits |
-| `/worlds/:id/outcome` — Outcome & history | Compare the accepted shared node or two forks, understand credits and next rights | Withdraw eligible credit or open a continuation | pending/retryable/merge/fork/credit/withdrawn/error | Branches stack with clear A/B labels; history is collapsible |
+| `/worlds/:id/outcome` — Outcome & history | Compare the accepted shared node or two forks, understand credits and next rights | Withdraw eligible credit or inspect continuation rights | pending/retryable/merge/fork/credit/withdrawn/error | Branches stack with clear A/B labels; history is collapsible |
 | `/account` — Wallet & credits | Review connected address, network, owned worlds, eligible credits and disconnect | Withdraw or disconnect | disconnected/loading/empty/credit/failed | Address wraps; large tap targets |
 | `/help` — How it works | Explain public stories, GEN purse, validator decision, refund timing, and failure/retry | Navigate back into flow | static, with network/config notice | Short sections and anchor links |
 
@@ -250,12 +250,12 @@ cell. A genuinely non-temporal method records `N/A` with a reason in
 
 | Canonical state | User action | Contract write | UI component | Frontend test | Evidence status |
 | --- | --- | --- | --- | --- | --- |
-| No world | Create/fund 2 GEN | `create_world` | NewWorld form | adapter regression + form/role test | UI baseline done; SDK/network pending |
-| OPEN | Submit A/B scene | `submit_branch` | WriteScene | wrapper value/account test + role/deadline UI test | UI baseline done; SDK/network pending |
-| READY/RETRYABLE | Review/retry | `review_merge` | WorldDetail action | lifecycle state/finality/reload test | UI baseline done; SDK/network pending |
-| MERGED/FORKED | Read graph/rights | view calls | Outcome | canonical mapping/render test | UI baseline done; contract pending |
-| CLOSED/recovery eligible | Recover purse | `cancel_missing` / `recover_unresolved` | WorldDetail action | role/time/reload test | UI baseline done; contract pending |
-| positive credit | Withdraw | `withdraw_credit` | Account/Outcome | real SDK value-free write + reload test | UI baseline done; contract pending |
+| No world | Create/fund 2 GEN | `create_world` | NewWorld form | adapter regression + form/role test | frontend wrapper, SDK preflight and Studio Dev lifecycle verified |
+| OPEN | Submit A/B scene | `submit_branch` | WriteScene | wrapper value/account test + role/deadline UI test | frontend wrapper, SDK preflight and Studio Dev lifecycle verified |
+| READY/RETRYABLE | Review/retry | `review_merge` | WorldDetail action | lifecycle state/finality/reload test | frontend wrapper, SDK preflight and Studio Dev lifecycle verified |
+| MERGED/FORKED | Read graph/rights | view calls | Outcome | canonical mapping/render test | contract, adapter and browser-local canonical read verified |
+| CLOSED/recovery eligible | Recover purse | `cancel_missing` / `recover_unresolved` | WorldDetail action | role/time/reload test | contract, adapter and browser-local canonical read verified |
+| positive credit | Withdraw | `withdraw_credit` | Account/Outcome | real SDK value-free write + reload test | contract, adapter and browser-local canonical read verified |
 
 ## Evidence policy
 
@@ -472,7 +472,7 @@ No important claim may have a blank cell.
 
 - V1 judges internal fictional consistency; it does not prove authorship, copyright, quality, publication or external game events.
 - Branch text and addresses are public. No private story workflow is supported.
-- Phase 3 frontend is locally built and honest but remains unwired until Phase 7; Studio Dev/browser evidence is pending.
+- The frontend is wired to the deployed Studio Dev contract. Browser-local evidence covers the public read flow; wallet writes are proven by the real-SDK preflight and the script-signed Studio Dev lifecycle.
 - One-model Phase-2 viability spike is not validator agreement or production reliability evidence.
 - Cross-world imports and external provenance are a milestone, not v1 behavior.
 
@@ -483,3 +483,4 @@ No important claim may have a blank cell.
 - Direct tests cannot prove every terminal/recovery path reaches an explicit GEN destination.
 - Studio Dev cannot complete one real semantic lifecycle or browser IC reads fail CORS/proxy checks.
 - The implementation drifts into a centralized backend decision, fake wallet state, or a duplicate winner/appeal/policy primitive.
+

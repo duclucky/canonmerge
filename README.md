@@ -19,3 +19,8 @@ The check runs `genvm-lint`, direct-mode contract tests, frontend TypeScript, fr
 - `docs/` - specification and sanitized evidence
 
 All product values are shown in GEN. The contract uses base units only at the SDK/VM boundary (1 GEN = 10^18 base units).
+
+## Live evidence
+
+- Studio Dev contract: https://explorer-studio-dev.genlayer.com/address/0xe985c3420bFDa71E922dBE01e2c62dC9F4146950
+- Sanitized deployment and 2 GEN lifecycle records: docs/evidence/studio-dev/`n

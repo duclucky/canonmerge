@@ -6,7 +6,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 // Studio-dev v0.6 RC deployment for CanonMerge. This script deliberately does
 // not run the value-bearing product lifecycle: deployment fees are quoted and
-// passed to the SDK, while a 2 GEN assessment needs its own explicit run.
+// passed to the SDK, while a 2 GEN world needs its own explicit run.
 
 const PROJECT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTRACT_PATH = path.join(PROJECT, "contracts", "canonmerge.py");
@@ -225,7 +225,7 @@ async function main() {
     smoke: { method: "get_world_count", result: "0" },
   };
   writeJson(EVIDENCE_PATH, evidence);
-  configureLocalFrontend(contractAddress, endpoint);
+  configureLocalFrontend(contractAddress, "/genlayer-rpc");
   console.log(`STUDIO_DEV_DEPLOYED contract=${contractAddress}`);
   console.log(`STUDIO_DEV_SMOKE get_world_count=0`);
 }
@@ -234,4 +234,5 @@ main().catch((error) => {
   console.error(`STUDIO_DEV_DEPLOY_FAILED ${error instanceof Error ? error.message : String(error)}`);
   process.exitCode = 1;
 });
+
 

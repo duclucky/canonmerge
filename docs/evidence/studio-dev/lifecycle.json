@@ -1,0 +1,38 @@
+{
+  "network": "studio-dev",
+  "chainId": 61997,
+  "contractAddress": "0xe985c3420bFDa71E922dBE01e2c62dC9F4146950",
+  "worldId": "canonmerge-demo-e479ac7",
+  "roles": {
+    "sponsor": "0xC495ef51618D03267A1f227aFe5b27B38c748272",
+    "writerA": "0x45aD397c438397A702B53a7499a78D08961D39Db",
+    "writerB": "0x45248be151F7f7e230150db23774733Cd966Eb45"
+  },
+  "demoPurse": "2 GEN",
+  "phase": "MERGED",
+  "result": "MERGEABLE",
+  "attemptCount": 1,
+  "settled": true,
+  "lockedAfter": "0 GEN",
+  "creditsAfter": {
+    "sponsor": "0 GEN",
+    "writerA": "0 GEN",
+    "writerB": "0 GEN"
+  },
+  "accounting": {
+    "totalReceived": "2 GEN",
+    "totalLocked": "0 GEN",
+    "totalCredits": "0 GEN",
+    "totalWithdrawn": "2 GEN"
+  },
+  "transactions": {
+    "sponsor_create_world_1": "0x8f6ac131f44f3db9a908043582729154fd439e1a1794b72f1b8994671b5e71e7",
+    "writerA_submit_branch_2": "0xc80e9780eb74b6f0388d9da511e202128d8d81f2b05e2c69eae1898c07216606",
+    "writerB_submit_branch_3": "0xd34a773c30e75f285cd184f4744ea23d261a3108eca8e44dd4954453e5991a2e",
+    "sponsor_review_merge_4": "0x2e63d1c6a690ea7e48ccbeb6e089c5696e0d196e57005da19e8a79f3d8a14cfa",
+    "writerA_withdraw_credit_5": "0xa7db548971d59448aafccf06d8f72ed143a117b911f2d5da9c3b55181482dc48",
+    "writerB_withdraw_credit_reconciled": "0x86cffb2f115bae122d3ed09e9b63bdf118947c0868379bbaf8ea091865194ddc"
+  },
+  "explorerUrl": "https://explorer-studio-dev.genlayer.com/address/0xe985c3420bFDa71E922dBE01e2c62dC9F4146950",
+  "evidenceIsSanitized": true
+}
