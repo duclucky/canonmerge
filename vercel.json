@@ -1,3 +1,9 @@
 {
-  "rewrites": [{ "source": "/genlayer-rpc", "destination": "/api/genlayer-rpc" }, { "source": "/(.*)", "destination": "/index.html" }]
+  "buildCommand": "npm ci --prefix frontend && npm run build --prefix frontend",
+  "outputDirectory": "frontend/dist",
+  "functions": { "api/*.mjs": { "runtime": "nodejs22.x" } },
+  "rewrites": [
+    { "source": "/genlayer-rpc", "destination": "/api/genlayer-rpc" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
