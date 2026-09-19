@@ -1,0 +1,9 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/genlayer-rpc", "destination": "/api/genlayer-rpc" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
