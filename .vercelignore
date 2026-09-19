@@ -11,3 +11,11 @@ frontend/dist
 .env
 frontend/.env
 docs/evidence/studio-dev/private
+
+contracts
+tests
+scripts
+docs
+requirements.txt
+pyproject.toml
+gltest.config.yaml
