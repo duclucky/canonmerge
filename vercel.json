@@ -1,0 +1,3 @@
+{
+  "rewrites": [{ "source": "/genlayer-rpc", "destination": "/api/genlayer-rpc" }, { "source": "/(.*)", "destination": "/index.html" }]
+}

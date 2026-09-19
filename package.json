@@ -1,0 +1,6 @@
+{
+  "name": "canonmerge-project",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": { "check": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check.ps1" }
+}
