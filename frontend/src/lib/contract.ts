@@ -55,7 +55,7 @@ function toWorld(item: Record<string, unknown>): WorldDetail {
 }
 function failed(receipt: unknown): boolean {
   if (!receipt || typeof receipt !== 'object') return true
-  const serialized=JSON.stringify(receipt).toUpperCase()
+  const serialized=JSON.stringify(receipt,(_key,value)=>typeof value==='bigint'?value.toString():value).toUpperCase()
   return serialized.includes('EXECUTION_ERROR') || serialized.includes('EXECUTION_FAILURE') || serialized.includes('REVERTED')
 }
 function slug(title: string): string {
