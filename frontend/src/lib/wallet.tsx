@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { isAddress } from '../domain'
 import { studioDevnet } from 'genlayer-js/chains'
@@ -60,9 +60,20 @@ interface WalletContextValue {
 const WalletContext = createContext<WalletContextValue | null>(null)
 const expectedChainId = studioDevnet.id
 const walletRpcUrl = studioDevnet.rpcUrls.default.http[0]
+const WALLET_CHOICE_KEY = 'canonmerge.wallet.choice'
 
 let activeWalletSession: { account: string; provider: Eip1193Provider } | null = null
 export function getActiveWalletSession() { return activeWalletSession }
+
+export async function restoreAuthorizedWallet(choice: WalletChoice): Promise<{ address: string; chainId: number } | null> {
+  const accounts = await choice.provider.request({ method: 'eth_accounts' })
+  const address = Array.isArray(accounts) ? accounts[0] : null
+  if (typeof address !== 'string' || !isAddress(address)) return null
+  const rawChain = await choice.provider.request({ method: 'eth_chainId' })
+  const chainId = typeof rawChain === 'string' ? Number.parseInt(rawChain, 16) : Number.NaN
+  if (!Number.isFinite(chainId)) return null
+  return { address, chainId }
+}
 
 export async function ensureStudioNetwork(provider: Eip1193Provider): Promise<void> {
   const chainId = `0x${studioDevnet.id.toString(16)}`
@@ -93,6 +104,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const [modalOpen, setModalOpen] = useState(false)
   const [pending, setPending] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const restoreAttempt = useRef<string | null>(null)
 
   useEffect(() => {
     const add = (next: WalletChoice) => {
@@ -120,7 +132,10 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     if (!provider) return
     const onAccounts = (next: unknown) => {
       const first = Array.isArray(next) ? next[0] : null
-      setAddress(typeof first === 'string' && isAddress(first) ? first : null)
+      const nextAddress = typeof first === 'string' && isAddress(first) ? first : null
+      setAddress(nextAddress)
+      activeWalletSession = nextAddress ? { account: nextAddress, provider } : null
+      if (!nextAddress) window.sessionStorage.removeItem(WALLET_CHOICE_KEY)
     }
     const onChain = (hex: unknown) => setChainId(typeof hex === 'string' ? Number.parseInt(hex, 16) : null)
     provider.on?.('accountsChanged', onAccounts)
@@ -131,6 +146,30 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     }
   }, [provider])
 
+  useEffect(() => {
+    if (provider) return
+    const remembered = window.sessionStorage.getItem(WALLET_CHOICE_KEY)
+    if (!remembered || restoreAttempt.current === remembered) return
+    const choice = choices.find((item) => item.id === remembered)
+    if (!choice) return
+    restoreAttempt.current = remembered
+    let cancelled = false
+    void restoreAuthorizedWallet(choice).then((restored) => {
+      if (cancelled) return
+      if (!restored) {
+        window.sessionStorage.removeItem(WALLET_CHOICE_KEY)
+        return
+      }
+      activeWalletSession = { account: restored.address, provider: choice.provider }
+      setProvider(choice.provider)
+      setAddress(restored.address)
+      setChainId(restored.chainId)
+    }).catch(() => {
+      if (!cancelled) window.sessionStorage.removeItem(WALLET_CHOICE_KEY)
+    })
+    return () => { cancelled = true }
+  }, [choices, provider])
+
   const disconnect = useCallback(() => {
     activeWalletSession = null
     setAddress(null)
@@ -138,6 +177,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     setChainId(null)
     setError(null)
     setModalOpen(false)
+    window.sessionStorage.removeItem(WALLET_CHOICE_KEY)
   }, [])
 
   const connect = useCallback(async (choice: WalletChoice) => {
@@ -151,6 +191,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       setProvider(choice.provider)
       setAddress(next)
       activeWalletSession = { account: next, provider: choice.provider }
+      window.sessionStorage.setItem(WALLET_CHOICE_KEY, choice.id)
       setChainId(typeof rawChain === 'string' ? Number.parseInt(rawChain, 16) : null)
       setModalOpen(false)
     } catch (cause) {
