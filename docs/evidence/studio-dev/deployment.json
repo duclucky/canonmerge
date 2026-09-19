@@ -1,0 +1,27 @@
+{
+  "network": "studio-dev",
+  "chainId": 61997,
+  "rpc": "https://studio-dev.genlayer.com/api",
+  "contract": "CanonMerge",
+  "contractAddress": "0xe985c3420bFDa71E922dBE01e2c62dC9F4146950",
+  "explorerUrl": "https://explorer-studio-dev.genlayer.com/address/0xe985c3420bFDa71E922dBE01e2c62dC9F4146950",
+  "status": "FINALIZED",
+  "deploy": {
+    "transactionHash": "0x05e5f89005eaa2f6799709fb4285ed2e5e7879f05c32cc6da6c6c88041645de7",
+    "status": "7",
+    "executionResult": "FINISHED_WITH_RETURN",
+    "contractAddress": "0xe985c3420bFDa71E922dBE01e2c62dC9F4146950"
+  },
+  "feeDepositGen": "0.100000000000010352 GEN",
+  "sourceCommit": "e479ac76f37830a061e56437f8a9335c0b8e03a7",
+  "sourceSha256": "68756fe3adb0208944159bdcb21065f152853571c3d1204403e52021352e1414",
+  "sourceDirtyAtDeployment": false,
+  "depends": "py-genlayer:5jycge4q8k23462jtb0b9fyey1s9qz928sz2nbrd9mg4sxqg2qng",
+  "deployedAt": "2026-09-19T12:39:55.080Z",
+  "active": true,
+  "evidenceIsSanitized": true,
+  "smoke": {
+    "method": "get_world_count",
+    "result": "0"
+  }
+}
