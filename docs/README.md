@@ -9,7 +9,7 @@ Status: `LIVE_ON_STUDIO_DEV`. Contract, 2 GEN lifecycle, withdrawals, same-origi
 - Project slug: `canonmerge`
 - Category: Projects
 - Status: `LIVE_ON_STUDIO_DEV`
-- Repository: local child Git repository; public remote pending Phase 11
+- Repository: https://github.com/duclucky/canonmerge
 - Target network: Studio Dev, as locked in parent `docs/09`
 
 ## One-sentence product hook
@@ -36,20 +36,20 @@ Two writers propose different next scenes for the same fictional world; GenLayer
 
 | Gate | PASS/FAIL | Evidence/reason |
 | --- | --- | --- |
-| Replacement | PASS — DESIGN | A studio backend would control canon and credits; validators decide the semantic relation. |
-| Judgment | PASS — DESIGN | Causal/temporal consistency across natural-language branches is not a string lookup. |
-| Evidence availability | PASS — DESIGN | Exact bounded game commitments are canonical onchain state; no external source is consequential. |
-| Evidence authenticity | PASS — DESIGN | Role-checked transaction authorship and world/epoch/parent binding; the complete Evidence Authority Matrix is recorded below. |
-| Equivalence | PASS — DESIGN | Strict entity/constraint/branch coverage and semantic relation class; rationale wording may differ. |
-| Consequence | PASS — DESIGN | Final verdict changes graph topology, rights and fixed GEN destinations. |
-| Adversarial | PASS — DESIGN | Sponsor and writers have opposed refund/merge incentives. |
-| State model | PASS — DESIGN | Per-epoch isolation, direct deadlines, append-only attempts, idempotent credits, terminal refunds. |
-| Reuse | PASS — DESIGN | Three named game/fiction consumers use the same typed public interface. |
-| Contract count | PASS — DESIGN | One contract owns the necessary semantic and value boundary. |
-| Differentiation | PASS — DESIGN | Seven-field comparison with RulebookAppeal, GrantLattice, SkillSlot and others has at most two broad matches each. |
-| Claim-to-code | PASS — DESIGN | implemented action/state/view/test/browser paths are recorded below and verified by local plus Studio Dev evidence. |
-| Full lifecycle | PASS — DESIGN | Browser roles, wallet writes/finality/retry, canonical reads and withdrawals are planned; actual proof due later phases. |
-| Scope honesty | PASS — DESIGN | Internal fictional consistency only; no copyright, offchain publication or real-world truth claim. |
+| Replacement | PASS | A studio backend would control canon and credits; validators decide the semantic relation. |
+| Judgment | PASS | Causal/temporal consistency across natural-language branches is not a string lookup. |
+| Evidence availability | PASS | Exact bounded game commitments are canonical onchain state; no external source is consequential. |
+| Evidence authenticity | PASS | Role-checked transaction authorship and world/epoch/parent binding; the complete Evidence Authority Matrix is recorded below. |
+| Equivalence | PASS | Strict entity/constraint/branch coverage and semantic relation class; rationale wording may differ. |
+| Consequence | PASS | Final verdict changes graph topology, rights and fixed GEN destinations. |
+| Adversarial | PASS | Sponsor and writers have opposed refund/merge incentives. |
+| State model | PASS | Per-epoch isolation, direct deadlines, append-only attempts, idempotent credits, terminal refunds. |
+| Reuse | PASS | Three named game/fiction consumers use the same typed public interface. |
+| Contract count | PASS | One contract owns the necessary semantic and value boundary. |
+| Differentiation | PASS | Seven-field comparison with RulebookAppeal, GrantLattice, SkillSlot and others has at most two broad matches each. |
+| Claim-to-code | PASS | Implemented action/state/view/test/browser paths are recorded below and verified by local plus Studio Dev evidence. |
+| Full lifecycle | PASS | A complete MERGEABLE lifecycle settled and withdrew 2 GEN; production-browser funding and review proved submitted, accepted, finalized, retry, and canonical reload. |
+| Scope honesty | PASS | Internal fictional consistency only; no copyright, offchain publication or real-world truth claim. |
 
 One FAIL means redesign/reject.
 
@@ -449,30 +449,30 @@ No important claim may have a blank cell.
 
 ### Intelligent Contracts
 
-- [ ] Reusable primitive.
-- [ ] Semantic validator judgment.
-- [ ] Direct consequence.
-- [ ] Reuse proof (documented views/adapter, or a separately justified consumer contract).
-- [ ] Adversarial tests.
-- [ ] Real network lifecycle.
-- [ ] Canonical evidence.
+- [x] Reusable primitive.
+- [x] Semantic validator judgment.
+- [x] Direct consequence.
+- [x] Reuse proof (documented views/adapter, or a separately justified consumer contract).
+- [x] Adversarial tests.
+- [x] Real network lifecycle.
+- [x] Canonical evidence.
 
 ### Projects, if selected
 
-- [ ] Real frontend wallet write.
-- [ ] Full lifecycle/failure/retry.
-- [ ] Canonical reads.
-- [ ] Meaningful user outcome.
-- [ ] Browser evidence.
-- [ ] Every claimed browser lifecycle action has frontend wrapper/control/test/finality/canonical reload.
-- [ ] Primary UI contains only user-relevant data/actions; system/reviewer
+- [x] Real frontend wallet write: OKX funded 2 GEN and signed a review on production.
+- [x] Full lifecycle/failure/retry.
+- [x] Canonical reads.
+- [x] Meaningful user outcome.
+- [x] Browser evidence.
+- [x] Every claimed browser lifecycle action has frontend wrapper/control/test/finality/canonical reload.
+- [x] Primary UI contains only user-relevant data/actions; system/reviewer
       details are contextual or hidden.
 
 ## Honest limitations
 
 - V1 judges internal fictional consistency; it does not prove authorship, copyright, quality, publication or external game events.
 - Branch text and addresses are public. No private story workflow is supported.
-- The frontend is wired to the deployed Studio Dev contract. Browser-local evidence covers the public read flow; wallet writes are proven by the real-SDK preflight and the script-signed Studio Dev lifecycle.
+- The frontend is wired to the deployed Studio Dev contract. Browser-local evidence covers public reads plus OKX-signed 2 GEN funding and review with submitted, accepted, finalized, and canonical RETRYABLE reload. Writer submissions in that browser proof and the earlier complete MERGEABLE lifecycle used authorized scripts.
 - One-model Phase-2 viability spike is not validator agreement or production reliability evidence.
 - Cross-world imports and external provenance are a milestone, not v1 behavior.
 

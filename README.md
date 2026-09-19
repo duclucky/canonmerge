@@ -34,7 +34,7 @@ The LLM never supplies recipients or amounts. The contract checks exact world, p
 - `frontend/`: Vite + React UI, EIP-6963/injected-wallet discovery, GenLayer SDK adapter, accepted/finalized/failure states, and canonical reloads.
 - `frontend/api/genlayer-rpc.mjs`: bounded same-origin proxy for browser-safe Intelligent Contract reads.
 - `scripts/`: resumable Studio Dev deployment and lifecycle runners.
-- `docs/evidence/studio-dev/`: sanitized deployment, lifecycle, and browser-read evidence.
+- `docs/evidence/studio-dev/`: sanitized deployment, lifecycle, browser-read, and browser-wallet evidence.
 
 ## Verification
 
@@ -42,7 +42,7 @@ The LLM never supplies recipients or amounts. The contract checks exact world, p
 npm run check
 ```
 
-Current local result: one contract; 15 public methods (9 view, 6 write); 16 direct checks passing; 2 frontend wallet-adapter tests passing; TypeScript and production build passing. GitHub Actions runs the same contract lint, direct tests, and frontend check on public commits.
+Current local result: one contract; 15 public methods (9 view, 6 write); 16 direct checks passing; 4 frontend wallet tests passing; TypeScript and production build passing. GitHub Actions runs the same contract lint, direct tests, and frontend check on public commits.
 
 The finalized Studio Dev lifecycle used exactly 2 GEN, produced `MERGED / MERGEABLE`, withdrew both 1 GEN credits, and ended with `received=2 GEN`, `locked=0`, `credits=0`, `withdrawn=2 GEN`.
 
@@ -69,7 +69,7 @@ The deployment script reuses an active deployment when its source hash matches. 
 
 ## Honest Limits
 
-- The production browser read flow is verified. Wallet transaction encoding is verified with the real SDK, while the consequential live lifecycle was signed by the deployment scripts rather than a browser extension.
+- The production browser read flow is verified. A browser extension funded a world with 2 GEN and later showed submitted, accepted, finalized, and canonical retry reload for a sponsor review. The two writer submissions in that browser proof used authorized lifecycle scripts; the earlier complete MERGEABLE lifecycle and withdrawals were also script-signed.
 - CanonMerge judges consistency inside an explicitly fictional world. It does not prove copyright, real-world events, or offchain publication.
 - V1 exposes continuation rights through `can_extend`; opening a child epoch from those rights is future milestone work.
 - Studio Dev is the only deployed network, and no external adoption is claimed.

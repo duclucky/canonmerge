@@ -16,7 +16,7 @@
 
 ## Honest pending work
 
-The live lifecycle used script signers; production browser writes are SDK-preflighted but were not signed through an extension during this run. No external platform integration or adoption is claimed.
+The complete MERGEABLE lifecycle used script signers. A separate production-browser proof used OKX to fund 2 GEN and request review, showing submitted, accepted, finalized, and a canonical RETRYABLE reload; its writer submissions used authorized lifecycle scripts. No external platform integration or adoption is claimed.
 
 ## Milestone headroom
 

@@ -1,0 +1,39 @@
+{
+  "network": "studio-dev",
+  "contractAddress": "0xe985c3420bFDa71E922dBE01e2c62dC9F4146950",
+  "worldId": "browser-wallet-proof-2026-09-19-mu8ij0yy",
+  "browserWallet": "0xBd733BC56Ec4a55FA25C068B9306b0171335D199",
+  "funding": {
+    "amount": "2 GEN",
+    "transactionHash": "0x744b12114706b2f294402cffb356fc08cd52f79c5cbf0855ae833f61e9e05d90",
+    "status": "FINALIZED",
+    "execution": "SUCCESS",
+    "consensus": "Accepted"
+  },
+  "writers": {
+    "writerAHash": "0xf5f372e251e6f613bc7601ebbbcc7a0a37a19feee65e94a0da8994cac0dabc57",
+    "writerBHash": "0xd112afebd191b72d5cf65ba27cdb0e8d0b48567d08a7cfd475fe2ac33dfb6198",
+    "bothFinalized": true,
+    "signingSurface": "authorized lifecycle scripts"
+  },
+  "browserReview": {
+    "transactionHash": "0x9d21ee53c6e0590e157ad6f4433caa8b04b2e57ba81ea818dcbab9803e0b367f",
+    "uiStages": ["submitted", "accepted", "finalized"],
+    "execution": "FINISHED_WITH_RETURN",
+    "successful": true,
+    "canonicalReload": true
+  },
+  "canonicalStateAfterReview": {
+    "phase": "RETRYABLE",
+    "result": null,
+    "attemptCount": 1,
+    "settled": false,
+    "locked": "2 GEN",
+    "totalReceived": "4 GEN",
+    "totalLocked": "2 GEN",
+    "totalCredits": "0 GEN",
+    "totalWithdrawn": "2 GEN"
+  },
+  "safetyOutcome": "UNVERIFIABLE/RETRYABLE moved no GEN and granted no story rights",
+  "evidenceIsSanitized": true
+}
