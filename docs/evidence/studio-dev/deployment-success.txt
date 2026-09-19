@@ -1,0 +1,9 @@
+Network: Studio Dev
+Contract: CanonMerge
+Address: 0xe985c3420bFDa71E922dBE01e2c62dC9F4146950
+Deployment transaction: 0x05e5f89005eaa2f6799709fb4285ed2e5e7879f05c32cc6da6c6c88041645de7
+Status: FINALIZED
+Execution result: FINISHED_WITH_RETURN
+Result: SUCCESS
+Smoke view: get_world_count = 0
+Source commit: e479ac76f37830a061e56437f8a9335c0b8e03a7

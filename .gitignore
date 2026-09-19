@@ -24,3 +24,7 @@ frontend/public/icons.svg
 
 docs/evidence/studio-dev/lifecycle-private.json
 .vercel
+
+precheck-report.json
+precheck-report.txt
+grade-report.json
