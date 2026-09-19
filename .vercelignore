@@ -1,0 +1,13 @@
+.git
+.github
+.venv
+.genvm-direct-cache
+.local
+artifacts
+frontend/node_modules
+frontend/dist
+**/__pycache__
+**/.pytest_cache
+.env
+frontend/.env
+docs/evidence/studio-dev/private
